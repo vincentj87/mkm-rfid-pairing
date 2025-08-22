@@ -238,15 +238,15 @@ void ConnectivityStatusTFT(){
     Serial.println("Reconnected to Zebra scanner!");
     tft.fillRect(0, 10, 320, 16, ILI9341_BLACK);
     tft.setCursor(10, 10);
-    tft.setTextColor(ILI9341_GREEN);
-    tft.print("KASSEN : CONNECTED");
+    tft.setTextColor(ILI9341_RED);
+    tft.print("KASSEN : DISCONNECTED");
   }
   else
   {
     tft.fillRect(0, 10, 320, 16, ILI9341_BLACK);
     tft.setCursor(10, 10);
-    tft.setTextColor(ILI9341_RED);
-    tft.print("KASSEN : DISCONNECTED");
+    tft.setTextColor(ILI9341_GREEN);
+    tft.print("KASSEN : CONNECTED");
     Serial.println("Connectivity Status (): Bluetooth not connected, trying to reconnect...");
   }
   
@@ -305,6 +305,8 @@ void buttonRoutine()
           rfidReadResult="";
           tftShowBarcode();
           tftShowRfid();
+          delay(2000);
+          tft.fillRect(0,100, 320, 20, ILI9341_BLACK);
 
         }
         else
